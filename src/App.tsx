@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>팽도리의 계산기 테스트</h1>
+      <h1>팽도리의 계산기 테스트!!!</h1>
 
       <div className="grid">
         {/* GET */}
