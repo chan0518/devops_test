@@ -15,7 +15,7 @@ import com.chan.ec2test.dto.MultiplicationResponseDto;
 @RestController
 public class HealthController {
 
-	@Operation(summary = "곱셈 API", description = "숫자 두 개를 입력받아 곱한 결과 반환")
+	@Operation(summary = "[POST] 곱셈 API", description = "숫자 두 개를 입력받아 곱한 결과 반환")
 	@PostMapping("/multiplication")
 	public MultiplicationResponseDto multiplication(
 	        @RequestBody MultiplicationRequestDto request
@@ -25,7 +25,7 @@ public class HealthController {
 	    return new MultiplicationResponseDto(message);
 	}
     
-    @Operation(summary = "곱셈 API", description = "숫자 두 개를 입력받아 곱한 결과 반환")
+    @Operation(summary = "[GET] 곱셈 API", description = "숫자 두 개를 입력받아 곱한 결과 반환")
     @GetMapping("/multiplication")
     public int multiplication(
             @Parameter(description = "첫번째 숫자", example = "3")
