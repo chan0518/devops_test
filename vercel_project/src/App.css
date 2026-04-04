@@ -1,82 +1,271 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f8fafc; /* 밝은 배경 */
-  color: #1e293b;
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 245, 220, 0.92), transparent 36%),
+    linear-gradient(180deg, #f7f1e4 0%, #efe5d2 50%, #e7dac4 100%);
+}
+
+.ambient {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(26px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.ambient-left {
+  top: 72px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 251, 237, 0.98), transparent 68%);
+}
+
+.ambient-right {
+  top: 140px;
+  right: -20px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(245, 228, 191, 0.72), transparent 70%);
+}
+
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.26;
+  background:
+    repeating-linear-gradient(
+      -14deg,
+      rgba(148, 115, 71, 0.08) 0,
+      rgba(148, 115, 71, 0.08) 2px,
+      rgba(255, 255, 255, 0.08) 2px,
+      rgba(255, 255, 255, 0.08) 18px
+    );
 }
 
 .container {
-  padding: 40px;
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 72px 0 48px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  color: #0f172a;
+.hero {
+  margin-bottom: 32px;
+  padding: 36px 38px;
+  border: 1px solid rgba(173, 142, 103, 0.2);
+  border-radius: 32px;
+  background:
+    linear-gradient(145deg, rgba(255, 250, 241, 0.88), rgba(244, 234, 216, 0.94)),
+    repeating-linear-gradient(
+      -18deg,
+      rgba(155, 124, 85, 0.03) 0,
+      rgba(155, 124, 85, 0.03) 14px,
+      rgba(255, 255, 255, 0.08) 14px,
+      rgba(255, 255, 255, 0.08) 28px
+    );
+  box-shadow:
+    0 24px 50px rgba(121, 90, 56, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.66);
+}
+
+.eyebrow,
+.card-kicker {
+  margin: 0;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  color: #a27d53;
+}
+
+.hero h1 {
+  margin: 12px 0 14px;
+  max-width: 760px;
+  font-size: clamp(2.2rem, 4vw, 4.3rem);
+  line-height: 1.06;
+  letter-spacing: -0.05em;
+  color: #4a3827;
+}
+
+.hero-copy {
+  max-width: 700px;
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.8;
+  color: rgba(94, 72, 51, 0.84);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
 }
 
+.card,
+.log-panel {
+  border: 1px solid rgba(175, 144, 103, 0.18);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.92), rgba(241, 231, 214, 0.96)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(164, 130, 90, 0.025) 0,
+      rgba(164, 130, 90, 0.025) 16px,
+      rgba(255, 255, 255, 0.08) 16px,
+      rgba(255, 255, 255, 0.08) 32px
+    );
+  box-shadow:
+    0 18px 36px rgba(126, 93, 56, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
 .card {
-  background: #ffffff;
-  padding: 24px;
+  padding: 28px;
+}
+
+.card-head {
+  margin-bottom: 18px;
+}
+
+.card h2,
+.log-head h3 {
+  margin: 10px 0 0;
+  font-size: 1.55rem;
+  color: #4c3825;
+}
+
+.field {
+  display: block;
+  margin-top: 16px;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 8px;
+  color: #826448;
+  font-size: 0.92rem;
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid rgba(175, 144, 103, 0.18);
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* 핵심 포인트 */
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-}
-
-input {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  background: rgba(255, 250, 243, 0.82);
+  color: #463423;
   outline: none;
-  transition: border 0.2s;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
-input:focus {
-  border: 1px solid #3b82f6;
+.field input::placeholder {
+  color: rgba(128, 99, 69, 0.4);
 }
 
-button {
-  margin-top: 12px;
+.field input:focus {
+  background: rgba(255, 253, 249, 0.98);
+  border-color: rgba(192, 152, 95, 0.5);
+  box-shadow: 0 0 0 4px rgba(229, 201, 156, 0.3);
+  transform: translateY(-1px);
+}
+
+.card button {
   width: 100%;
-  padding: 14px;
-  border-radius: 10px;
+  margin-top: 18px;
+  padding: 15px 18px;
   border: none;
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
-  color: white;
-  font-weight: bold;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c89b65, #e5c89d);
+  color: #3f2d1d;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   cursor: pointer;
-  transition: all 0.2s;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+  box-shadow: 0 14px 28px rgba(180, 141, 89, 0.18);
 }
 
-button:hover {
-  transform: scale(1.02);
-  opacity: 0.9;
+.card button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+  box-shadow: 0 18px 34px rgba(180, 141, 89, 0.24);
 }
 
 .result {
-  margin-top: 15px;
-  font-weight: bold;
-  color: #1e40af;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 250, 242, 0.76);
+  border: 1px solid rgba(194, 157, 114, 0.12);
 }
 
-.log {
-  margin-top: 40px;
-  background: #ffffff;
-  padding: 20px;
+.result-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a48059;
+}
+
+.result strong {
+  color: #4c3926;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.log-panel {
+  margin-top: 24px;
+  padding: 28px;
+}
+
+.log-list {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.log-item,
+.log-empty {
+  padding: 14px 16px;
   border-radius: 16px;
-  max-height: 200px;
-  overflow-y: auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 252, 247, 0.74);
+  border: 1px solid rgba(196, 160, 119, 0.1);
+  color: #6d533a;
+  line-height: 1.65;
+}
+
+.log-empty {
+  color: rgba(109, 83, 58, 0.72);
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: min(100% - 24px, 1120px);
+    padding-top: 36px;
+  }
+
+  .hero,
+  .card,
+  .log-panel {
+    border-radius: 24px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 28px 24px;
+  }
 }

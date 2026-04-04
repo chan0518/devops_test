@@ -27,8 +27,8 @@ function App() {
 
       setGetResult(data);
       addLog(`GET 응답: ${data}`);
-    } catch (e) {
-      addLog("GET 에러 발생");
+    } catch {
+      addLog("GET 요청 중 오류가 발생했습니다.");
     }
   };
 
@@ -52,63 +52,114 @@ function App() {
 
       setPostResult(data.message);
       addLog(`POST 응답: ${JSON.stringify(data)}`);
-    } catch (e) {
-      addLog("POST 에러 발생");
+    } catch {
+      addLog("POST 요청 중 오류가 발생했습니다.");
     }
   };
 
   return (
-    <div className="container">
-      <h1>팽도리의 계산기 테스트!!!</h1>
+    <div className="app-shell">
+      <div className="ambient ambient-left" />
+      <div className="ambient ambient-right" />
+      <div className="grain-overlay" />
 
-      <div className="grid">
-        {/* GET */}
-        <div className="card">
-          <h2>GET /multiplication</h2>
-          <input
-            placeholder="num1"
-            value={num1}
-            onChange={(e) => setNum1(e.target.value)}
-          />
-          <input
-            placeholder="num2"
-            value={num2}
-            onChange={(e) => setNum2(e.target.value)}
-          />
-          <button onClick={handleGet}>GET 실행</button>
+      <main className="container">
+        <section className="hero">
+          <p className="eyebrow">Birch Studio</p>
+          <h1>밝은 자작나무 결 위에 놓인 API 테스트 데스크</h1>
+          <p className="hero-copy">
+            부드러운 베이지 톤과 은은한 확산광을 중심으로, GET과 POST 요청을
+            차분하게 확인할 수 있도록 화면을 다시 정리했습니다.
+          </p>
+        </section>
 
-          <div className="result">
-            결과: {getResult}
+        <section className="grid">
+          <article className="card">
+            <div className="card-head">
+              <p className="card-kicker">Endpoint</p>
+              <h2>GET /multiplication</h2>
+            </div>
+
+            <label className="field">
+              <span>첫 번째 숫자</span>
+              <input
+                placeholder="num1"
+                value={num1}
+                onChange={(e) => setNum1(e.target.value)}
+              />
+            </label>
+
+            <label className="field">
+              <span>두 번째 숫자</span>
+              <input
+                placeholder="num2"
+                value={num2}
+                onChange={(e) => setNum2(e.target.value)}
+              />
+            </label>
+
+            <button onClick={handleGet}>GET 실행</button>
+
+            <div className="result">
+              <span className="result-label">결과</span>
+              <strong>{getResult || "아직 응답이 없습니다."}</strong>
+            </div>
+          </article>
+
+          <article className="card">
+            <div className="card-head">
+              <p className="card-kicker">Endpoint</p>
+              <h2>POST /multiplication</h2>
+            </div>
+
+            <label className="field">
+              <span>값 A</span>
+              <input
+                placeholder="a"
+                value={postA}
+                onChange={(e) => setPostA(e.target.value)}
+              />
+            </label>
+
+            <label className="field">
+              <span>값 B</span>
+              <input
+                placeholder="b"
+                value={postB}
+                onChange={(e) => setPostB(e.target.value)}
+              />
+            </label>
+
+            <button onClick={handlePost}>POST 실행</button>
+
+            <div className="result">
+              <span className="result-label">결과</span>
+              <strong>{postResult || "아직 응답이 없습니다."}</strong>
+            </div>
+          </article>
+        </section>
+
+        <section className="log-panel">
+          <div className="log-head">
+            <p className="card-kicker">Activity</p>
+            <h3>요청 로그</h3>
           </div>
-        </div>
 
-        {/* POST */}
-        <div className="card">
-          <h2>POST /multiplication</h2>
-          <input
-            placeholder="a"
-            value={postA}
-            onChange={(e) => setPostA(e.target.value)}
-          />
-          <input
-            placeholder="b"
-            value={postB}
-            onChange={(e) => setPostB(e.target.value)}
-          />
-          <button onClick={handlePost}>POST 실행</button>
-
-          <div className="result">
-            결과: {postResult}
+          <div className="log-list">
+            {log.length > 0 ? (
+              log.map((entry, index) => (
+                <div className="log-item" key={`${entry}-${index}`}>
+                  {entry}
+                </div>
+              ))
+            ) : (
+              <div className="log-empty">
+                아직 기록이 없습니다. 요청을 실행하면 이곳에 순서대로 남습니다.
+              </div>
+            )}
           </div>
-        </div>
-      </div>
-
-      <div className="log">
-        <h3>요청 로그</h3>
-        {log.map((l, i) => (
-          <div key={i}>{l}</div>
-        ))}
-      </div>
+        </section>
+      </main>
     </div>
   );
 }
