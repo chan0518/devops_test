@@ -1,0 +1,5 @@
+com\chan\ec2test\ChanEc2TestApplication.class
+com\chan\ec2test\dto\MultiplicationResponseDto.class
+com\chan\ec2test\dto\MultiplicationRequestDto.class
+com\chan\ec2test\config\CorsConfig.class
+com\chan\ec2test\controller\HealthController.class
