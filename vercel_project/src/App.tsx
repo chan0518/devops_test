@@ -66,7 +66,7 @@ function App() {
       <main className="container">
         <section className="hero">
           <p className="eyebrow">Birch Studio</p>
-          <h1>밝은 자작나무 결 위에 놓인 API 테스트 데스크</h1>
+          <h1>API 테스트 계산기</h1>
           <p className="hero-copy">
             부드러운 베이지 톤과 은은한 확산광을 중심으로, GET과 POST 요청을
             차분하게 확인할 수 있도록 화면을 다시 정리했습니다.
