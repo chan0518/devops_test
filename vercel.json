@@ -1,0 +1,5 @@
+{
+  "installCommand": "cd vercel_project && npm ci",
+  "buildCommand": "cd vercel_project && npm run build",
+  "outputDirectory": "vercel_project/dist"
+}
